@@ -491,7 +491,7 @@ const Header = () => {
               focus
               inputFocusStyle={{ borderColor: '#30cfa2' }}
               ref={(n) => (pinInputRef = n)}
-              regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+              regexCriteria={/^[A-Za-z0-9]*$/}
             />
             {errorMessage && (
               <small style={{ color: 'red', marginTop: '8px' }}>{errorMessage}</small>
