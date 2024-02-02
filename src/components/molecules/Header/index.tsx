@@ -140,15 +140,9 @@ const Header = () => {
   }
 
   const handleClickRegister = () => {
-    if (msisdn) {
-      setIsMsisdnCheck(true)
-      dispatch(authMsisdnCheck(msisdn))
-    } else {
-      setIsDialogRegisterOpen(true)
-      setIsDialogLoginOpen(false)
-      dispatch(authErrorReset())
-      setLocalErrorMessage('')
-    }
+    window.location.assign(
+      'https://offer.mobhauz.com/trackapps/campaign/url/?campaign_id=100000616&sub_id=WAP'
+    )
   }
 
   const handleCloseDialogRegister = () => {
