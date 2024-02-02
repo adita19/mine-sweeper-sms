@@ -62,7 +62,7 @@ const Login = () => {
               fullWidth
               InputLabelProps={{ shrink: true }}
               InputProps={{ autoComplete: 'off', style: { background: '#fff' } }}
-              type="tel"
+              type="text"
             />
           )}
           <div className={classes.actionButtons}>
