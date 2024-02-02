@@ -484,13 +484,14 @@ const Header = () => {
           <Typography>Masukan nomor PIN anda. Cek inbox SMS:</Typography>
           <div className={classes.inputPin}>
             <PinInput
-              length={4}
+              length={6}
               onChange={(value) => setPin(value)}
-              type="numeric"
+              type="custom"
               inputMode="number"
               focus
               inputFocusStyle={{ borderColor: '#30cfa2' }}
               ref={(n) => (pinInputRef = n)}
+              regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
             />
             {errorMessage && (
               <small style={{ color: 'red', marginTop: '8px' }}>{errorMessage}</small>
@@ -541,13 +542,14 @@ const Header = () => {
           )}
           <div className={classes.inputPin}>
             <PinInput
-              length={4}
+              length={6}
               onChange={(value) => setPin(value)}
-              type="numeric"
+              type="custom"
               inputMode="number"
               focus
               inputFocusStyle={{ borderColor: '#30cfa2' }}
               ref={(n) => (pinInputRef = n)}
+              regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
             />
             {errorMessage && (
               <small style={{ color: 'red', marginTop: '8px' }}>{errorMessage}</small>
