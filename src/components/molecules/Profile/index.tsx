@@ -213,37 +213,13 @@ const Profile = () => {
             color="primary"
             onClick={handleClickChangePINButton}
             fullWidth
+            disabled
           >
             Ubah PIN
           </Button>
 
           <Button onClick={handleClickLogout} variant="contained" color="primary" fullWidth>
             Keluar
-          </Button>
-        </Paper>
-
-        <Typography className={classes.contentTitle}>Hubungi Kami</Typography>
-        <Paper
-          className={classes.paper}
-          style={{ display: 'flex', flexDirection: 'row', gap: '8px' }}
-        >
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleClickMessageButton}
-            fullWidth
-            endIcon={<ChatIcon />}
-          >
-            Tulis Pesan
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleWhatsAppButton}
-            fullWidth
-            endIcon={<WhatsAppIcon />}
-          >
-            Via WhatsApp
           </Button>
         </Paper>
       </div>

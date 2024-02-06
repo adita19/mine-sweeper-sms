@@ -110,6 +110,18 @@ const Header = () => {
   const isButtonResendSMSDisabled = countdownSMS > 0
   const errorMessage = error.message || localErrorMessage
 
+  //get
+  const queryString = window.location.search
+  const urlParams = new URLSearchParams(queryString)
+  const purchaseToken = urlParams.get('token')
+  let isReg = false
+  let isLoadingLoginVar = isLoadingLogin
+
+  if (purchaseToken != null) {
+    isReg = true
+    isLoadingLoginVar = true
+  }
+
   const handleCloseAllDialog = () => {
     dispatch(authErrorReset())
     dispatch(appDialogLoginSet(false))
@@ -140,9 +152,27 @@ const Header = () => {
   }
 
   const handleClickRegister = () => {
+    /**
     window.location.assign(
       'https://offer.mobhauz.com/trackapps/campaign/url/?campaign_id=100000616&sub_id=WAP'
     )
+    */
+    if (!isReg) {
+      window.location.assign(
+        'https://offer.mobhauz.com/trackapps/campaign/url/?campaign_id=100000616&sub_id=WAP'
+      )
+    } else {
+      if (msisdn) {
+        setIsMsisdnCheck(true)
+        dispatch(authMsisdnCheck(msisdn))
+        console.log(authMsisdnCheck(msisdn))
+      } else {
+        setIsDialogRegisterOpen(true)
+        setIsDialogLoginOpen(false)
+        dispatch(authErrorReset())
+        setLocalErrorMessage('')
+      }
+    }
   }
 
   const handleCloseDialogRegister = () => {
@@ -404,7 +434,7 @@ const Header = () => {
             color="primary"
             onClick={handleSubmitLogin}
             fullWidth
-            disabled={isLoadingLogin}
+            disabled={isLoadingLoginVar}
           >
             Masuk
             {isLoadingLogin && <CircularProgress size={16} style={{ marginLeft: '4px' }} />}
@@ -549,7 +579,7 @@ const Header = () => {
               focus
               inputFocusStyle={{ borderColor: '#30cfa2' }}
               ref={(n) => (pinInputRef = n)}
-              regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+              regexCriteria={/^[A-Za-z0-9]*$/}
             />
             {errorMessage && (
               <small style={{ color: 'red', marginTop: '8px' }}>{errorMessage}</small>
